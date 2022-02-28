@@ -1,15 +1,16 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { AirtableService } from "./airtable.service";
 
-describe("AirtableService", () => {
-  let service: AirtableService;
+import { TodosService } from "./todos.service";
+
+describe("TodosService", () => {
+  let service: TodosService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AirtableService],
+      providers: [TodosService],
     }).compile();
 
-    service = module.get<AirtableService>(AirtableService);
+    service = module.get<TodosService>(TodosService);
   });
 
   it("should be defined", () => {

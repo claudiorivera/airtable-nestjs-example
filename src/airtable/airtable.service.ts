@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { AirtableBase } from "airtable/lib/airtable_base";
 
 import { InjectAirtable } from "./lib/common/airtable.decorator";
@@ -8,8 +8,14 @@ export class AirtableService {
   constructor(@InjectAirtable() private readonly airtableBase: AirtableBase) {}
 
   async findAll({ tableName }) {
-    const query = this.airtableBase(tableName).select();
-    const rows = await query.all();
-    return rows;
+    try {
+      const query = this.airtableBase(tableName + "1").select();
+      const rows = await query.all();
+      Logger.debug(`Found ${rows.length} rows`, "AirtableService.findAll");
+      return rows;
+    } catch (error) {
+      Logger.error(error);
+      throw error;
+    }
   }
 }

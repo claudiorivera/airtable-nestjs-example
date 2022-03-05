@@ -20,14 +20,14 @@ export class TodosService {
 
   async create(createTodoDto: CreateTodoDto): Promise<Todo> {
     try {
-      const row = await this.airtableService.create({
+      const record = await this.airtableService.create({
         tableName: this.airtableTableName,
         data: createTodoDto,
       });
       return {
-        id: row.getId(),
-        description: row.get("description") as string,
-        isComplete: !!row.get("isComplete"),
+        id: record.getId(),
+        description: record.get("description") as string,
+        isComplete: !!record.get("isComplete"),
       };
     } catch (error) {
       Logger.error(error, "TodosService.create");
@@ -42,14 +42,14 @@ export class TodosService {
 
   async findAll(): Promise<Todo[]> {
     try {
-      const rows = await this.airtableService.findAll({
+      const records = await this.airtableService.findAll({
         tableName: this.airtableTableName,
       });
-      const todos = rows.map((row) => {
+      const todos = records.map((record) => {
         return {
-          id: row.getId(),
-          description: row.get("description") as string,
-          isComplete: !!row.get("isComplete"),
+          id: record.getId(),
+          description: record.get("description") as string,
+          isComplete: !!record.get("isComplete"),
         };
       });
       return todos;
@@ -68,14 +68,14 @@ export class TodosService {
 
   async findOne(id: string): Promise<Todo> {
     try {
-      const row = await this.airtableService.findOne({
+      const record = await this.airtableService.findOne({
         tableName: this.airtableTableName,
         id,
       });
       return {
-        id: row.getId(),
-        description: row.get("description") as string,
-        isComplete: !!row.get("isComplete"),
+        id: record.getId(),
+        description: record.get("description") as string,
+        isComplete: !!record.get("isComplete"),
       };
     } catch (error) {
       if (error.statusCode === 404) {
@@ -92,15 +92,15 @@ export class TodosService {
 
   async update(id: string, updateTodoDto: UpdateTodoDto): Promise<Todo> {
     try {
-      const row = await this.airtableService.update({
+      const record = await this.airtableService.update({
         tableName: this.airtableTableName,
         id,
         data: updateTodoDto,
       });
       return {
-        id: row.getId(),
-        description: row.get("description") as string,
-        isComplete: !!row.get("isComplete"),
+        id: record.getId(),
+        description: record.get("description") as string,
+        isComplete: !!record.get("isComplete"),
       };
     } catch (error) {
       Logger.error(error, "TodosService.update");

@@ -13,8 +13,8 @@ export class AirtableService {
 
   async create({ tableName, data }: CreateRecordDto) {
     try {
-      const row = await this.airtableBase(tableName).create(data);
-      return row;
+      const record = await this.airtableBase(tableName).create(data);
+      return record;
     } catch (error) {
       Logger.error(error, "AirtableService.create");
       throw error;
@@ -23,9 +23,8 @@ export class AirtableService {
 
   async findAll({ tableName }: FindAllRecordsDto) {
     try {
-      const query = this.airtableBase(tableName).select();
-      const rows = await query.all();
-      return rows;
+      const records = this.airtableBase(tableName).select().all();
+      return records;
     } catch (error) {
       Logger.error(error, "AirtableService.findAll");
       throw error;
@@ -34,8 +33,8 @@ export class AirtableService {
 
   async findOne({ tableName, id }: FindOneRecordDto) {
     try {
-      const row = await this.airtableBase(tableName).find(id);
-      return row;
+      const record = await this.airtableBase(tableName).find(id);
+      return record;
     } catch (error) {
       Logger.error(error, "AirtableService.findOne");
       throw error;
@@ -44,8 +43,8 @@ export class AirtableService {
 
   async update({ tableName, id, data }: UpdateRecordDto) {
     try {
-      const row = await this.airtableBase(tableName).update(id, data);
-      return row;
+      const record = await this.airtableBase(tableName).update(id, data);
+      return record;
     } catch (error) {
       Logger.error(error, "AirtableService.update");
       throw error;

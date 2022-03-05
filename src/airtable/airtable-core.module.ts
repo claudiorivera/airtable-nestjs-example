@@ -4,14 +4,14 @@ import { AirtableService } from "./airtable.service";
 import {
   AIRTABLE_CONFIG_OPTIONS,
   AIRTABLE_CONFIG_TOKEN,
-} from "./lib/common/airtable.constants";
-import { createAirtableClient } from "./lib/common/airtable.utils";
+  createAirtableClient,
+} from "./lib/common";
 import {
   AirtableModuleAsyncOptions,
   AirtableModuleOptions,
   AirtableOptionsFactory,
-} from "./lib/interfaces/airtable-options.interface";
-import { createAirtableProviders } from "./lib/providers/airtable.provider";
+} from "./lib/interfaces";
+import { createAirtableProviders } from "./lib/providers";
 
 @Global()
 @Module({

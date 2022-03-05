@@ -1,6 +1,6 @@
 import { IsString } from "class-validator";
 
-export class CreateTodoDto {
+export class FindAllRecordsDto {
   @IsString()
-  readonly description: string;
+  tableName: string;
 }

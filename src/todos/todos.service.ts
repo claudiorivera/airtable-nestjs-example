@@ -1,21 +1,143 @@
-import { Injectable } from "@nestjs/common";
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from "@nestjs/common";
 import { AirtableService } from "src/airtable/airtable.service";
 
+import { CreateTodoDto } from "./dto/create-todo.dto";
+import { UpdateTodoDto } from "./dto/update-todo.dto";
 import { Todo } from "./interfaces/todo.interface";
 
 @Injectable()
 export class TodosService {
-  constructor(private airtableService: AirtableService) {}
+  airtableTableName: string;
+  constructor(private airtableService: AirtableService) {
+    this.airtableTableName = "todos";
+  }
 
-  async findAll(): Promise<Todo[]> {
-    const rows = await this.airtableService.findAll({ tableName: "Todos" });
-    const todos = rows.map((row) => {
+  async create(createTodoDto: CreateTodoDto): Promise<Todo> {
+    try {
+      const row = await this.airtableService.create({
+        tableName: this.airtableTableName,
+        data: createTodoDto,
+      });
       return {
-        id: row.id,
-        name: row.get("name") as string,
+        id: row.getId(),
+        description: row.get("description") as string,
         isComplete: !!row.get("isComplete"),
       };
-    });
-    return todos;
+    } catch (error) {
+      Logger.error(error, "TodosService.create");
+      if (error.statusCode === 422) {
+        throw new HttpException(
+          `Invalid fields: ${JSON.stringify(createTodoDto, null, 2)}`,
+          HttpStatus.UNPROCESSABLE_ENTITY,
+        );
+      }
+    }
+  }
+
+  async findAll(): Promise<Todo[]> {
+    try {
+      const rows = await this.airtableService.findAll({
+        tableName: this.airtableTableName,
+      });
+      const todos = rows.map((row) => {
+        return {
+          id: row.getId(),
+          description: row.get("description") as string,
+          isComplete: !!row.get("isComplete"),
+        };
+      });
+      return todos;
+    } catch (error) {
+      if (error.statusCode === 404) {
+        throw new NotFoundException(
+          `Table ID '${
+            this.airtableTableName
+          }' not found in Base ID '${this.airtableService.getBaseId()}'`,
+        );
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  async findOne(id: string): Promise<Todo> {
+    try {
+      const row = await this.airtableService.findOne({
+        tableName: this.airtableTableName,
+        id,
+      });
+      return {
+        id: row.getId(),
+        description: row.get("description") as string,
+        isComplete: !!row.get("isComplete"),
+      };
+    } catch (error) {
+      if (error.statusCode === 404) {
+        throw new NotFoundException(
+          `Todo ID '${id}' not found in Table named '${
+            this.airtableTableName
+          }' in Base ID '${this.airtableService.getBaseId()}'`,
+        );
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  async update(id: string, updateTodoDto: UpdateTodoDto): Promise<Todo> {
+    try {
+      const row = await this.airtableService.update({
+        tableName: this.airtableTableName,
+        id,
+        data: updateTodoDto,
+      });
+      return {
+        id: row.getId(),
+        description: row.get("description") as string,
+        isComplete: !!row.get("isComplete"),
+      };
+    } catch (error) {
+      Logger.error(error, "TodosService.update");
+      if (error.statusCode === 422) {
+        throw new HttpException(
+          `Invalid fields: ${JSON.stringify(updateTodoDto, null, 2)}`,
+          HttpStatus.UNPROCESSABLE_ENTITY,
+        );
+      }
+      if (error.statusCode === 404) {
+        throw new NotFoundException(
+          `Todo ID '${id}' not found in Table named '${
+            this.airtableTableName
+          }' in Base ID '${this.airtableService.getBaseId()}'`,
+        );
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  async delete(id: string) {
+    try {
+      await this.airtableService.delete({
+        tableName: this.airtableTableName,
+        id,
+      });
+    } catch (error) {
+      if (error.statusCode === 404) {
+        throw new NotFoundException(
+          `Todo ID '${id}' not found in Table named '${
+            this.airtableTableName
+          }' in Base ID '${this.airtableService.getBaseId()}'`,
+        );
+      } else {
+        throw error;
+      }
+    }
   }
 }

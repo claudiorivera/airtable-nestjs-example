@@ -5,7 +5,7 @@ import { AirtableCoreModule } from "./airtable-core.module";
 import {
   AirtableModuleAsyncOptions,
   AirtableModuleOptions,
-} from "./lib/interfaces/airtable-options.interface";
+} from "./lib/interfaces";
 
 @Module({
   providers: [AirtableService],

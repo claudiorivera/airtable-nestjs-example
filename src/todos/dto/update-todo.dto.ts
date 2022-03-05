@@ -1,6 +1,11 @@
-import { CreateTodoDto } from "./create-todo.dto";
+import { IsBoolean, IsOptional, IsString } from "class-validator";
 
-export class UpdateTodoDto extends CreateTodoDto {
-  readonly id: string;
-  readonly isComplete: boolean;
+export class UpdateTodoDto {
+  @IsOptional()
+  @IsBoolean()
+  readonly isComplete?: boolean;
+
+  @IsOptional()
+  @IsString()
+  readonly description?: string;
 }

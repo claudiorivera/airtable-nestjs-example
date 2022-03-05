@@ -1,4 +1,4 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { AirtableBase } from "airtable/lib/airtable_base";
 
 import { CreateRecordDto } from "./dto/create-record.dto";
@@ -6,6 +6,7 @@ import { FindAllRecordsDto } from "./dto/find-all-records.dto";
 import { FindOneRecordDto } from "./dto/find-one-record.dto";
 import { UpdateRecordDto } from "./dto/update-record.dto";
 import { InjectAirtable } from "./lib/common";
+import { AirtableException } from "./lib/interfaces";
 
 @Injectable()
 export class AirtableService {
@@ -16,8 +17,7 @@ export class AirtableService {
       const record = await this.airtableBase(tableName).create(data);
       return record;
     } catch (error) {
-      Logger.error(error, "AirtableService.create");
-      throw error;
+      throw new AirtableException(error);
     }
   }
 
@@ -26,8 +26,7 @@ export class AirtableService {
       const records = this.airtableBase(tableName).select().all();
       return records;
     } catch (error) {
-      Logger.error(error, "AirtableService.findAll");
-      throw error;
+      throw new AirtableException(error);
     }
   }
 
@@ -36,8 +35,7 @@ export class AirtableService {
       const record = await this.airtableBase(tableName).find(id);
       return record;
     } catch (error) {
-      Logger.error(error, "AirtableService.findOne");
-      throw error;
+      throw new AirtableException(error);
     }
   }
 
@@ -46,8 +44,7 @@ export class AirtableService {
       const record = await this.airtableBase(tableName).update(id, data);
       return record;
     } catch (error) {
-      Logger.error(error, "AirtableService.update");
-      throw error;
+      throw new AirtableException(error);
     }
   }
 
@@ -55,8 +52,7 @@ export class AirtableService {
     try {
       await this.airtableBase(tableName).destroy(id);
     } catch (error) {
-      Logger.error(error, "AirtableService.delete");
-      throw error;
+      throw new AirtableException(error);
     }
   }
 

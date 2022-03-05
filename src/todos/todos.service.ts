@@ -2,7 +2,6 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
-  Logger,
   NotFoundException,
 } from "@nestjs/common";
 import { AirtableService } from "src/airtable/airtable.service";
@@ -30,12 +29,14 @@ export class TodosService {
         isComplete: !!record.get("isComplete"),
       };
     } catch (error) {
-      Logger.error(error, "TodosService.create");
-      if (error.statusCode === 422) {
-        throw new HttpException(
-          `Invalid fields: ${JSON.stringify(createTodoDto, null, 2)}`,
-          HttpStatus.UNPROCESSABLE_ENTITY,
-        );
+      switch (error.statusCode) {
+        case 422:
+          throw new HttpException(
+            error.message,
+            HttpStatus.UNPROCESSABLE_ENTITY,
+          );
+        default:
+          throw error;
       }
     }
   }
@@ -54,14 +55,15 @@ export class TodosService {
       });
       return todos;
     } catch (error) {
-      if (error.statusCode === 404) {
-        throw new NotFoundException(
-          `Table ID '${
-            this.airtableTableName
-          }' not found in Base ID '${this.airtableService.getBaseId()}'`,
-        );
-      } else {
-        throw error;
+      switch (error.statusCode) {
+        case 404:
+          throw new NotFoundException(
+            `Table ID '${
+              this.airtableTableName
+            }' not found in Base ID '${this.airtableService.getBaseId()}'`,
+          );
+        default:
+          throw error;
       }
     }
   }
@@ -78,14 +80,15 @@ export class TodosService {
         isComplete: !!record.get("isComplete"),
       };
     } catch (error) {
-      if (error.statusCode === 404) {
-        throw new NotFoundException(
-          `Todo ID '${id}' not found in Table named '${
-            this.airtableTableName
-          }' in Base ID '${this.airtableService.getBaseId()}'`,
-        );
-      } else {
-        throw error;
+      switch (error.statusCode) {
+        case 404:
+          throw new NotFoundException(
+            `Todo ID '${id}' not found in Table named '${
+              this.airtableTableName
+            }' in Base ID '${this.airtableService.getBaseId()}'`,
+          );
+        default:
+          throw error;
       }
     }
   }
@@ -103,21 +106,20 @@ export class TodosService {
         isComplete: !!record.get("isComplete"),
       };
     } catch (error) {
-      Logger.error(error, "TodosService.update");
-      if (error.statusCode === 422) {
-        throw new HttpException(
-          `Invalid fields: ${JSON.stringify(updateTodoDto, null, 2)}`,
-          HttpStatus.UNPROCESSABLE_ENTITY,
-        );
-      }
-      if (error.statusCode === 404) {
-        throw new NotFoundException(
-          `Todo ID '${id}' not found in Table named '${
-            this.airtableTableName
-          }' in Base ID '${this.airtableService.getBaseId()}'`,
-        );
-      } else {
-        throw error;
+      switch (error.statusCode) {
+        case 404:
+          throw new NotFoundException(
+            `Todo ID '${id}' not found in Table named '${
+              this.airtableTableName
+            }' in Base ID '${this.airtableService.getBaseId()}'`,
+          );
+        case 422:
+          throw new HttpException(
+            error.message,
+            HttpStatus.UNPROCESSABLE_ENTITY,
+          );
+        default:
+          throw error;
       }
     }
   }
@@ -129,14 +131,15 @@ export class TodosService {
         id,
       });
     } catch (error) {
-      if (error.statusCode === 404) {
-        throw new NotFoundException(
-          `Todo ID '${id}' not found in Table named '${
-            this.airtableTableName
-          }' in Base ID '${this.airtableService.getBaseId()}'`,
-        );
-      } else {
-        throw error;
+      switch (error.statusCode) {
+        case 404:
+          throw new NotFoundException(
+            `Todo ID '${id}' not found in Table named '${
+              this.airtableTableName
+            }' in Base ID '${this.airtableService.getBaseId()}'`,
+          );
+        default:
+          throw error;
       }
     }
   }

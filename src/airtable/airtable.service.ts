@@ -2,26 +2,22 @@ import { Injectable } from "@nestjs/common";
 import { AirtableBase } from "airtable/lib/airtable_base";
 
 import { CreateRecordDto } from "./dto/create-record.dto";
-import { FindAllRecordsDto } from "./dto/find-all-records.dto";
-import { FindOneRecordDto } from "./dto/find-one-record.dto";
-import { UpdateRecordDto } from "./dto/update-record.dto";
-import { InjectAirtable } from "./lib/common";
-import { AirtableException } from "./lib/interfaces";
+import { AirtableException, InjectAirtable } from "./lib/common";
 
 @Injectable()
 export class AirtableService {
   constructor(@InjectAirtable() private readonly airtableBase: AirtableBase) {}
 
-  async create({ tableName, data }: CreateRecordDto) {
+  async create(tableName: string, createRecordDto: CreateRecordDto) {
     try {
-      const record = await this.airtableBase(tableName).create(data);
+      const record = await this.airtableBase(tableName).create(createRecordDto);
       return record;
     } catch (error) {
       throw new AirtableException(error);
     }
   }
 
-  async findAll({ tableName }: FindAllRecordsDto) {
+  async findAll(tableName: string) {
     try {
       const records = this.airtableBase(tableName).select().all();
       return records;
@@ -30,7 +26,7 @@ export class AirtableService {
     }
   }
 
-  async findOne({ tableName, id }: FindOneRecordDto) {
+  async findOne(tableName: string, id: string) {
     try {
       const record = await this.airtableBase(tableName).find(id);
       return record;
@@ -39,16 +35,23 @@ export class AirtableService {
     }
   }
 
-  async update({ tableName, id, data }: UpdateRecordDto) {
+  async update(
+    tableName: string,
+    id: string,
+    createRecordDto: CreateRecordDto,
+  ) {
     try {
-      const record = await this.airtableBase(tableName).update(id, data);
+      const record = await this.airtableBase(tableName).update(
+        id,
+        createRecordDto,
+      );
       return record;
     } catch (error) {
       throw new AirtableException(error);
     }
   }
 
-  async delete({ tableName, id }: FindOneRecordDto) {
+  async delete(tableName: string, id: string) {
     try {
       await this.airtableBase(tableName).destroy(id);
     } catch (error) {

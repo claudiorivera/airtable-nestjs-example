@@ -3,12 +3,12 @@ import { AirtableBase } from "airtable/lib/airtable_base";
 
 import { AirtableModuleOptions } from "../interfaces/airtable-options.interface";
 
-export function createAirtableClient(
+export const createAirtableClient = (
   options: AirtableModuleOptions,
-): AirtableBase {
+): AirtableBase => {
   const airtable = new Airtable({
     apiKey: options.apiKey,
   });
 
   return airtable.base(options.baseId);
-}
+};

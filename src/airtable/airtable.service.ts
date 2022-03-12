@@ -8,7 +8,7 @@ import { AirtableException, InjectAirtable } from "./lib/common";
 export class AirtableService {
   constructor(@InjectAirtable() private readonly airtableBase: AirtableBase) {}
 
-  async create(tableName: string, createRecordDto: CreateRecordDto) {
+  async createRecord(tableName: string, createRecordDto: CreateRecordDto) {
     try {
       const record = await this.airtableBase(tableName).create(createRecordDto);
       return record;
@@ -17,7 +17,7 @@ export class AirtableService {
     }
   }
 
-  async findAll(tableName: string) {
+  async findAllRecords(tableName: string) {
     try {
       const records = this.airtableBase(tableName).select().all();
       return records;
@@ -26,7 +26,7 @@ export class AirtableService {
     }
   }
 
-  async findOne(tableName: string, id: string) {
+  async findRecordById(tableName: string, id: string) {
     try {
       const record = await this.airtableBase(tableName).find(id);
       return record;
@@ -35,7 +35,7 @@ export class AirtableService {
     }
   }
 
-  async update(
+  async findRecordByIdAndUpdate(
     tableName: string,
     id: string,
     createRecordDto: CreateRecordDto,
@@ -51,7 +51,7 @@ export class AirtableService {
     }
   }
 
-  async delete(tableName: string, id: string) {
+  async findRecordByIdAndDelete(tableName: string, id: string) {
     try {
       await this.airtableBase(tableName).destroy(id);
     } catch (error) {

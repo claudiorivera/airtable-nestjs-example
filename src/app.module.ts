@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 
 import { AirtableModule } from "./airtable/airtable.module";
 import { TodosModule } from "./todos/todos.module";
+import { UsersModule } from "./users/users.module";
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { TodosModule } from "./todos/todos.module";
         };
       },
     }),
+    UsersModule,
   ],
 })
 export class AppModule {}

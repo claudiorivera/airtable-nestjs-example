@@ -4,12 +4,13 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { FieldSet, Record } from "airtable";
+import { FieldSet, Record, Records } from "airtable";
 import { AirtableService } from "src/airtable/airtable.service";
 
 import { CreateTodoDto } from "./dto/create-todo.dto";
 import { UpdateTodoDto } from "./dto/update-todo.dto";
 import { Todo } from "./interfaces/todo.interface";
+import { TodoRequestOptions } from "./interfaces/todo-request-options.interface";
 
 @Injectable()
 export class TodosService {
@@ -18,13 +19,18 @@ export class TodosService {
     this.airtableTableName = "todos";
   }
 
-  async create(createTodoDto: CreateTodoDto): Promise<Todo> {
+  async createTodo(
+    createTodoDto: CreateTodoDto,
+    options?: TodoRequestOptions,
+  ): Promise<Todo | Record<FieldSet>> {
     try {
-      const record = await this.airtableService.create(
+      const record = await this.airtableService.createRecord(
         this.airtableTableName,
         createTodoDto,
       );
-      return this.#constructTodoObjectFromRecord(record);
+      return options?.rawRecordData
+        ? record
+        : this.pojoFromAirtableRecord(record);
     } catch (error) {
       switch (error.statusCode) {
         case 422:
@@ -38,15 +44,21 @@ export class TodosService {
     }
   }
 
-  async findAll(): Promise<Todo[]> {
+  async findAllTodos(
+    options?: TodoRequestOptions,
+  ): Promise<Todo[] | Records<FieldSet>> {
     try {
-      const records = await this.airtableService.findAll(
+      const records = await this.airtableService.findAllRecords(
         this.airtableTableName,
       );
-      const todos = records.map((record) => {
-        return this.#constructTodoObjectFromRecord(record);
-      });
-      return todos;
+      if (options?.rawRecordData) {
+        return records;
+      } else {
+        const todos = records.map((record) => {
+          return this.pojoFromAirtableRecord(record);
+        });
+        return todos;
+      }
     } catch (error) {
       switch (error.statusCode) {
         case 404:
@@ -61,13 +73,18 @@ export class TodosService {
     }
   }
 
-  async findOne(id: string): Promise<Todo> {
+  async findOneTodo(
+    id: string,
+    options?: TodoRequestOptions,
+  ): Promise<Todo | Record<FieldSet>> {
     try {
-      const record = await this.airtableService.findOne(
+      const record = await this.airtableService.findRecordById(
         this.airtableTableName,
         id,
       );
-      return this.#constructTodoObjectFromRecord(record);
+      return options?.rawRecordData
+        ? record
+        : this.pojoFromAirtableRecord(record);
     } catch (error) {
       switch (error.statusCode) {
         case 404:
@@ -82,14 +99,20 @@ export class TodosService {
     }
   }
 
-  async update(id: string, updateTodoDto: UpdateTodoDto): Promise<Todo> {
+  async updateTodo(
+    id: string,
+    updateTodoDto: UpdateTodoDto,
+    options?: TodoRequestOptions,
+  ): Promise<Todo | Record<FieldSet>> {
     try {
-      const record = await this.airtableService.update(
+      const record = await this.airtableService.findRecordByIdAndUpdate(
         this.airtableTableName,
         id,
         updateTodoDto,
       );
-      return this.#constructTodoObjectFromRecord(record);
+      return options?.rawRecordData
+        ? record
+        : this.pojoFromAirtableRecord(record);
     } catch (error) {
       switch (error.statusCode) {
         case 404:
@@ -109,9 +132,12 @@ export class TodosService {
     }
   }
 
-  async delete(id: string) {
+  async deleteTodo(id: string) {
     try {
-      await this.airtableService.delete(this.airtableTableName, id);
+      await this.airtableService.findRecordByIdAndDelete(
+        this.airtableTableName,
+        id,
+      );
     } catch (error) {
       switch (error.statusCode) {
         case 404:
@@ -126,11 +152,22 @@ export class TodosService {
     }
   }
 
-  #constructTodoObjectFromRecord = (record: Record<FieldSet>): Todo => ({
-    id: record.getId(),
-    description: record.get("description") as string,
-    isComplete: !!record.get("isComplete"),
-    assignedTo: record.get("assignedTo") as string,
-    rewardsForCompletion: record.get("rewardsForCompletion") as string[],
-  });
+  pojoFromAirtableRecord = (record: Record<FieldSet>): Todo => {
+    const assignedToExists =
+      Array.isArray(record.get("assignedToUserRecord")) &&
+      (record.get("assignedToUserRecord") as string[]).length;
+    const assignedTo = assignedToExists
+      ? {
+          id: (record.get("assignedToUserRecord") as string[])[0],
+          name: (record.get("assignedToUserNameLookup") as string[])[0],
+        }
+      : null;
+
+    return {
+      id: record.getId(),
+      description: record.get("description") as string,
+      isComplete: !!record.get("isComplete"),
+      assignedTo,
+    };
+  };
 }

@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@nestjs/cli': 8.2.4
   '@nestjs/common': 8.4.3
-  '@nestjs/config': 1.2.1
+  '@nestjs/config': 2.0.0
   '@nestjs/core': 8.4.3
   '@nestjs/mapped-types': '*'
   '@nestjs/platform-express': 8.4.3
@@ -50,7 +50,7 @@ dependencies:
 
 devDependencies:
   '@nestjs/cli': 8.2.4
-  '@nestjs/config': 1.2.1_00edab75de3d00160109b98add317aa9
+  '@nestjs/config': 2.0.0_00edab75de3d00160109b98add317aa9
   '@nestjs/schematics': 8.0.8_typescript@4.6.3
   '@nestjs/testing': 8.4.3_f3535ac88edb13f3afdbc086f65fb7f4
   '@types/express': 4.17.13
@@ -843,8 +843,8 @@ packages:
       - debug
     dev: false
 
-  /@nestjs/config/1.2.1_00edab75de3d00160109b98add317aa9:
-    resolution: {integrity: sha512-EgaGTXvG4unD5lGWmdSrUFrkGpX32lQGE/8qS60EnL82sIZV7HT1ZL7ib5S86P1nB+DnFDbDhDqTaZ3mivTyOg==}
+  /@nestjs/config/2.0.0_00edab75de3d00160109b98add317aa9:
+    resolution: {integrity: sha512-Hi1k/1S5ogsS5c0OtNm72thiLSngijOaLDFaGI5ZPxNGpF23lctPg6ox3pYIOhXVRX/u+eiUIp71gswH2k8YNw==}
     peerDependencies:
       '@nestjs/common': ^7.0.0 || ^8.0.0
       reflect-metadata: ^0.1.13
@@ -852,7 +852,7 @@ packages:
     dependencies:
       '@nestjs/common': 8.4.3_5199533202e21c7185c9d97f881e2827
       dotenv: 16.0.0
-      dotenv-expand: 5.1.0
+      dotenv-expand: 8.0.2
       lodash: 4.17.21
       reflect-metadata: 0.1.13
       rxjs: 7.5.5
@@ -2271,8 +2271,9 @@ packages:
       webidl-conversions: 5.0.0
     dev: true
 
-  /dotenv-expand/5.1.0:
-    resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
+  /dotenv-expand/8.0.2:
+    resolution: {integrity: sha512-vKKAk+VOzAWOV/dPIeSYqhgC/TQY+6L6Ibkzfsr8xd1stdBsTuGu9asCOXgbYbBeS+f2Y6lqqEuw7riOA+xEUQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /dotenv/16.0.0:

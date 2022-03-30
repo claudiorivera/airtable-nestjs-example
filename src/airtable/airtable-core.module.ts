@@ -11,23 +11,12 @@ import {
   AirtableModuleOptions,
   AirtableOptionsFactory,
 } from "./lib/interfaces";
-import { createAirtableProviders } from "./lib/providers";
 
 @Global()
 @Module({
   providers: [AirtableService],
 })
 export class AirtableCoreModule {
-  public static forRoot(options: AirtableModuleOptions): DynamicModule {
-    const provider = createAirtableProviders(options);
-
-    return {
-      exports: [provider],
-      module: AirtableCoreModule,
-      providers: [provider],
-    };
-  }
-
   public static forRootAsync(
     options: AirtableModuleAsyncOptions,
   ): DynamicModule {

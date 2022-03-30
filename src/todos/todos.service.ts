@@ -14,10 +14,8 @@ import { TodoRequestOptions } from "./interfaces/todo-request-options.interface"
 
 @Injectable()
 export class TodosService {
-  airtableTableName: string;
-  constructor(private airtableService: AirtableService) {
-    this.airtableTableName = "todos";
-  }
+  airtableTableName = "todos";
+  constructor(private airtableService: AirtableService) {}
 
   async createTodo(
     createTodoDto: CreateTodoDto,
@@ -153,21 +151,10 @@ export class TodosService {
   }
 
   pojoFromAirtableRecord = (record: Record<FieldSet>): Todo => {
-    const assignedToExists =
-      Array.isArray(record.get("assignedToUserRecord")) &&
-      (record.get("assignedToUserRecord") as string[]).length;
-    const assignedTo = assignedToExists
-      ? {
-          id: (record.get("assignedToUserRecord") as string[])[0],
-          name: (record.get("assignedToUserNameLookup") as string[])[0],
-        }
-      : null;
-
     return {
       id: record.getId(),
       description: record.get("description") as string,
       isComplete: !!record.get("isComplete"),
-      assignedTo,
     };
   };
 }

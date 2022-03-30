@@ -3,14 +3,9 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 
 import { AirtableModule } from "./airtable/airtable.module";
 import { TodosModule } from "./todos/todos.module";
-import { UsersModule } from "./users/users.module";
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    TodosModule,
     AirtableModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -21,7 +16,10 @@ import { UsersModule } from "./users/users.module";
         };
       },
     }),
-    UsersModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TodosModule,
   ],
 })
 export class AppModule {}

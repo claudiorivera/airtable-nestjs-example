@@ -1,3 +1,3 @@
 export interface TodoRequestOptions {
-  rawRecordData: boolean;
+  returnAirtableRecord: boolean;
 }

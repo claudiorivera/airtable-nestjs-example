@@ -17,18 +17,18 @@ export class TodosService {
   airtableTableName = "todos";
   constructor(private airtableService: AirtableService) {}
 
-  async createTodo(
+  createTodo = async (
     createTodoDto: CreateTodoDto,
     options?: TodoRequestOptions,
-  ): Promise<Todo | Record<FieldSet>> {
+  ): Promise<Todo | Record<FieldSet>> => {
     try {
       const record = await this.airtableService.createRecord(
         this.airtableTableName,
         createTodoDto,
       );
-      return options?.rawRecordData
+      return options?.returnAirtableRecord
         ? record
-        : this.pojoFromAirtableRecord(record);
+        : this.todoEntityFromAirtableRecord(record);
     } catch (error) {
       switch (error.statusCode) {
         case 422:
@@ -40,84 +40,83 @@ export class TodosService {
           throw error;
       }
     }
-  }
+  };
 
-  async findAllTodos(
+  findAllTodos = async (
     options?: TodoRequestOptions,
-  ): Promise<Todo[] | Records<FieldSet>> {
+  ): Promise<Todo[] | Records<FieldSet>> => {
     try {
       const records = await this.airtableService.findAllRecords(
         this.airtableTableName,
       );
-      if (options?.rawRecordData) {
+      if (options?.returnAirtableRecord) {
         return records;
       } else {
-        const todos = records.map((record) => {
-          return this.pojoFromAirtableRecord(record);
-        });
-        return todos;
+        return records.map((record) =>
+          this.todoEntityFromAirtableRecord(record),
+        );
       }
     } catch (error) {
       switch (error.statusCode) {
         case 404:
           throw new NotFoundException(
-            `Table ID '${
+            `Table '${
               this.airtableTableName
-            }' not found in Base ID '${this.airtableService.getBaseId()}'`,
+            }' not found in Base '${this.airtableService.getBaseId()}'`,
           );
         default:
           throw error;
       }
     }
-  }
+  };
 
-  async findOneTodo(
+  findOneTodo = async (
     id: string,
     options?: TodoRequestOptions,
-  ): Promise<Todo | Record<FieldSet>> {
+  ): Promise<Todo | Record<FieldSet>> => {
     try {
       const record = await this.airtableService.findRecordById(
         this.airtableTableName,
         id,
       );
-      return options?.rawRecordData
+      return options?.returnAirtableRecord
         ? record
-        : this.pojoFromAirtableRecord(record);
+        : this.todoEntityFromAirtableRecord(record);
     } catch (error) {
       switch (error.statusCode) {
         case 404:
           throw new NotFoundException(
-            `Todo ID '${id}' not found in Table named '${
+            `${id} not found in ${
               this.airtableTableName
-            }' in Base ID '${this.airtableService.getBaseId()}'`,
+            } in ${this.airtableService.getBaseId()}`,
           );
         default:
           throw error;
       }
     }
-  }
+  };
 
-  async updateTodo(
+  updateTodo = async (
     id: string,
     updateTodoDto: UpdateTodoDto,
     options?: TodoRequestOptions,
-  ): Promise<Todo | Record<FieldSet>> {
+  ): Promise<Todo | Record<FieldSet>> => {
     try {
       const record = await this.airtableService.findRecordByIdAndUpdate(
         this.airtableTableName,
         id,
         updateTodoDto,
       );
-      return options?.rawRecordData
+      return options?.returnAirtableRecord
         ? record
-        : this.pojoFromAirtableRecord(record);
+        : this.todoEntityFromAirtableRecord(record);
     } catch (error) {
       switch (error.statusCode) {
         case 404:
           throw new NotFoundException(
-            `Todo ID '${id}' not found in Table named '${
+            `Todo '${id}' not found in Table '${
               this.airtableTableName
-            }' in Base ID '${this.airtableService.getBaseId()}'`,
+            }' in Base '${this.airtableService.getBaseId()}'`,
           );
         case 422:
           throw new HttpException(
@@ -128,9 +127,9 @@ export class TodosService {
           throw error;
       }
     }
-  }
+  };
 
-  async deleteTodo(id: string) {
+  deleteTodo = async (id: string) => {
     try {
       await this.airtableService.findRecordByIdAndDelete(
         this.airtableTableName,
@@ -140,21 +139,19 @@ export class TodosService {
       switch (error.statusCode) {
         case 404:
           throw new NotFoundException(
-            `Todo ID '${id}' not found in Table named '${
+            `Todo '${id}' not found in Table '${
               this.airtableTableName
-            }' in Base ID '${this.airtableService.getBaseId()}'`,
+            }' in Base '${this.airtableService.getBaseId()}'`,
           );
         default:
           throw error;
       }
     }
-  }
-
-  pojoFromAirtableRecord = (record: Record<FieldSet>): Todo => {
-    return {
-      id: record.getId(),
-      description: record.get("description") as string,
-      isComplete: !!record.get("isComplete"),
-    };
   };
+
+  todoEntityFromAirtableRecord = (record: Record<FieldSet>): Todo => ({
+    id: record.getId(),
+    description: record.get("description") as string,
+    isComplete: !!record.get("isComplete"),
+  });
 }

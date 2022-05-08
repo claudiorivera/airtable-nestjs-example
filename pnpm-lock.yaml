@@ -35,7 +35,7 @@ specifiers:
   ts-jest: 28.0.2
   ts-loader: 9.3.0
   ts-node: 10.7.0
-  tsconfig-paths: 3.14.1
+  tsconfig-paths: 4.0.0
   typescript: 4.6.4
 
 dependencies:
@@ -75,7 +75,7 @@ devDependencies:
   ts-jest: 28.0.2_cecb7ff85d54a968efd277ddda0b4a16
   ts-loader: 9.3.0_typescript@4.6.4
   ts-node: 10.7.0_fd4b5ff48b408bf425abfec4a641da13
-  tsconfig-paths: 3.14.1
+  tsconfig-paths: 4.0.0
   typescript: 4.6.4
 
 packages:
@@ -223,7 +223,7 @@ packages:
       convert-source-map: 1.8.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
-      json5: 2.2.0
+      json5: 2.2.1
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -3697,6 +3697,12 @@ packages:
       minimist: 1.2.6
     dev: true
 
+  /json5/2.2.1:
+    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
+    engines: {node: '>=6'}
+    hasBin: true
+    dev: true
+
   /jsonc-parser/3.0.0:
     resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
     dev: true
@@ -4906,6 +4912,14 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.1
+      minimist: 1.2.6
+      strip-bom: 3.0.0
+    dev: true
+
+  /tsconfig-paths/4.0.0:
+    resolution: {integrity: sha512-SLBg2GBKlR6bVtMgJJlud/o3waplKtL7skmLkExomIiaAtLGtVsoXIqP3SYdjbcH9lq/KVv7pMZeCBpLYOit6Q==}
+    dependencies:
+      json5: 2.2.1
       minimist: 1.2.6
       strip-bom: 3.0.0
     dev: true

@@ -16,7 +16,7 @@ specifiers:
   '@types/supertest': 2.0.12
   '@typescript-eslint/eslint-plugin': 5.23.0
   '@typescript-eslint/parser': 5.23.0
-  airtable: 0.11.3
+  airtable: 0.11.4
   class-transformer: 0.5.1
   class-validator: 0.13.2
   eslint: 8.15.0
@@ -43,7 +43,7 @@ dependencies:
   '@nestjs/core': 8.4.4_b63c269346792a9d57cfab86d23050d2
   '@nestjs/mapped-types': 1.0.1_5a485a6776bce4bf38c75aafd7cb3504
   '@nestjs/platform-express': 8.4.4_a78378ec5f3cecc3c353ed91b578f3e6
-  airtable: 0.11.3
+  airtable: 0.11.4
   class-transformer: 0.5.1
   class-validator: 0.13.2
   lodash: 4.17.21
@@ -1547,8 +1547,8 @@ packages:
     hasBin: true
     dev: true
 
-  /airtable/0.11.3:
-    resolution: {integrity: sha512-fPT0SdipmJU1eQNe+sJshvnb87HcZ2rPS7gJuryDAF9xDbfbxB8AmYQSuC1f0PIbLyPPpSWBuEewf4UJ9i3rJw==}
+  /airtable/0.11.4:
+    resolution: {integrity: sha512-y8sEi/sMEdgtgvv0V8AhJyFQB9za+6qGIxllt60Ey5ELBgu+bNEc1hjY2aqzp9C38p0ORfaeRS5RSFWlcq11Aw==}
     engines: {node: '>=8.0.0'}
     dependencies:
       '@types/node': 14.18.12

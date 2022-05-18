@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@nestjs/cli': 8.2.5
   '@nestjs/common': 8.4.5
-  '@nestjs/config': 2.0.0
+  '@nestjs/config': 2.0.1
   '@nestjs/core': 8.4.5
   '@nestjs/mapped-types': '*'
   '@nestjs/platform-express': 8.4.5
@@ -53,7 +53,7 @@ dependencies:
 
 devDependencies:
   '@nestjs/cli': 8.2.5
-  '@nestjs/config': 2.0.0_74a5f58103aca90eb73831b6f499f41f
+  '@nestjs/config': 2.0.1_74a5f58103aca90eb73831b6f499f41f
   '@nestjs/schematics': 8.0.11_typescript@4.6.4
   '@nestjs/testing': 8.4.5_af31697f166e96f0aa85c9782d92c104
   '@types/express': 4.17.13
@@ -871,16 +871,16 @@ packages:
       - debug
     dev: false
 
-  /@nestjs/config/2.0.0_74a5f58103aca90eb73831b6f499f41f:
-    resolution: {integrity: sha512-Hi1k/1S5ogsS5c0OtNm72thiLSngijOaLDFaGI5ZPxNGpF23lctPg6ox3pYIOhXVRX/u+eiUIp71gswH2k8YNw==}
+  /@nestjs/config/2.0.1_74a5f58103aca90eb73831b6f499f41f:
+    resolution: {integrity: sha512-N1sV9YrkLCgqI3plVWt9tccUfMJ3jsjGMl1KN/WDnDkr9jQ4XHt9vnHhdBeclegRyZN2/0TBAqCIEAoD4TaVag==}
     peerDependencies:
       '@nestjs/common': ^7.0.0 || ^8.0.0
       reflect-metadata: ^0.1.13
       rxjs: ^6.0.0 || ^7.2.0
     dependencies:
       '@nestjs/common': 8.4.5_5199533202e21c7185c9d97f881e2827
-      dotenv: 16.0.0
-      dotenv-expand: 8.0.2
+      dotenv: 16.0.1
+      dotenv-expand: 8.0.3
       lodash: 4.17.21
       reflect-metadata: 0.1.13
       rxjs: 7.5.5
@@ -2242,13 +2242,13 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /dotenv-expand/8.0.2:
-    resolution: {integrity: sha512-vKKAk+VOzAWOV/dPIeSYqhgC/TQY+6L6Ibkzfsr8xd1stdBsTuGu9asCOXgbYbBeS+f2Y6lqqEuw7riOA+xEUQ==}
+  /dotenv-expand/8.0.3:
+    resolution: {integrity: sha512-SErOMvge0ZUyWd5B0NXMQlDkN+8r+HhVUsxgOO7IoPDOdDRD2JjExpN6y3KnFR66jsJMwSn1pqIivhU5rcJiNg==}
     engines: {node: '>=12'}
     dev: true
 
-  /dotenv/16.0.0:
-    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
+  /dotenv/16.0.1:
+    resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
     engines: {node: '>=12'}
     dev: true
 

@@ -33,7 +33,7 @@ specifiers:
   source-map-support: 0.5.21
   supertest: 6.2.3
   ts-jest: 28.0.5
-  ts-loader: 9.3.0
+  ts-loader: 9.3.1
   ts-node: 10.8.1
   tsconfig-paths: 4.0.0
   typescript: 4.7.4
@@ -73,7 +73,7 @@ devDependencies:
   source-map-support: 0.5.21
   supertest: 6.2.3
   ts-jest: 28.0.5_jest@28.1.1+typescript@4.7.4
-  ts-loader: 9.3.0_typescript@4.7.4
+  ts-loader: 9.3.1_typescript@4.7.4
   ts-node: 10.8.1_841f2a74d64cdda652a10d589e346265
   tsconfig-paths: 4.0.0
   typescript: 4.7.4
@@ -2203,14 +2203,6 @@ packages:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
     dependencies:
       once: 1.4.0
-    dev: true
-
-  /enhanced-resolve/5.9.2:
-    resolution: {integrity: sha512-GIm3fQfwLJ8YZx2smuHpBKkXC1yOk+OBEmKckVyL0i/ea8mqDEykK3ld5dgH1QYPNyT/lIllxV2LULnxCHaHkA==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      graceful-fs: 4.2.9
-      tapable: 2.2.1
     dev: true
 
   /enhanced-resolve/5.9.3:
@@ -4604,15 +4596,15 @@ packages:
       yargs-parser: 21.0.1
     dev: true
 
-  /ts-loader/9.3.0_typescript@4.7.4:
-    resolution: {integrity: sha512-2kLLAdAD+FCKijvGKi9sS0OzoqxLCF3CxHpok7rVgCZ5UldRzH0TkbwG9XECKjBzHsAewntC5oDaI/FwKzEUog==}
+  /ts-loader/9.3.1_typescript@4.7.4:
+    resolution: {integrity: sha512-OkyShkcZTsTwyS3Kt7a4rsT/t2qvEVQuKCTg4LJmpj9fhFR7ukGdZwV6Qq3tRUkqcXtfGpPR7+hFKHCG/0d3Lw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       typescript: '*'
       webpack: ^5.0.0
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.9.2
+      enhanced-resolve: 5.9.3
       micromatch: 4.0.4
       semver: 7.3.7
       typescript: 4.7.4
@@ -4653,7 +4645,7 @@ packages:
     resolution: {integrity: sha512-EhnfjHbzm5IYI9YPNVIxx1moxMI4bpHD2e0zTXeDNQcwjjRaGepP7IhTHJkyDBG0CAOoxRfe7jCG630Ou+C6Pw==}
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.9.2
+      enhanced-resolve: 5.9.3
       tsconfig-paths: 3.14.1
     dev: true
 

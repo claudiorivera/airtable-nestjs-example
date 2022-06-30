@@ -21,7 +21,7 @@ specifiers:
   class-validator: 0.13.2
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0
-  eslint-plugin-prettier: 4.2.0
+  eslint-plugin-prettier: 4.2.1
   eslint-plugin-simple-import-sort: 7.0.0
   eslint-plugin-unused-imports: 2.0.0
   jest: 28.1.2
@@ -65,7 +65,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.30.0_eslint@8.18.0+typescript@4.7.4
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0
-  eslint-plugin-prettier: 4.2.0_bd3c4b21319ad16ec3ab54a1da22f60e
+  eslint-plugin-prettier: 4.2.1_bd3c4b21319ad16ec3ab54a1da22f60e
   eslint-plugin-simple-import-sort: 7.0.0_eslint@8.18.0
   eslint-plugin-unused-imports: 2.0.0_1e964a6145de49d333e5e8bea88c9672
   jest: 28.1.2_7b87ec40d4317bbfd4ef77169b4d57b4
@@ -2286,8 +2286,8 @@ packages:
       eslint: 8.18.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.0_bd3c4b21319ad16ec3ab54a1da22f60e:
-    resolution: {integrity: sha512-w+EYWwMltYqlsirUG2LXROmC8cBIUSEpR4s/Oft8wX8Xm99FTfU+M+ehv47ZQbYPqD9ZAuCtZI6IuWw3Q004dw==}
+  /eslint-plugin-prettier/4.2.1_bd3c4b21319ad16ec3ab54a1da22f60e:
+    resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       eslint: '>=7.28.0'

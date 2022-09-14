@@ -10,7 +10,7 @@ specifiers:
   '@nestjs/schematics': 9.0.3
   '@nestjs/testing': 9.0.11
   '@types/express': 4.17.14
-  '@types/jest': 29.0.1
+  '@types/jest': 29.0.2
   '@types/lodash': 4.14.185
   '@types/node': 16.11.58
   '@types/supertest': 2.0.12
@@ -57,7 +57,7 @@ devDependencies:
   '@nestjs/schematics': 9.0.3_qul7ung6gmj6jydd3dgpqap7gu
   '@nestjs/testing': 9.0.11_z6gh3n3qpn6ig2eqi2q57zofvq
   '@types/express': 4.17.14
-  '@types/jest': 29.0.1
+  '@types/jest': 29.0.2
   '@types/lodash': 4.14.185
   '@types/node': 16.11.58
   '@types/supertest': 2.0.12
@@ -1148,8 +1148,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.0.1:
-    resolution: {integrity: sha512-CAZrjLRZs4xEdIrfrdV74xK1Vo/BKQZwUcjJv3gp6gMeV3BsVxMnXTcgtYOKyphT4DPPo7jxVEVhuwJTQn3oPQ==}
+  /@types/jest/29.0.2:
+    resolution: {integrity: sha512-TaklkwSEtvwJpleiKBHgEBySIQlcZ08gYP/s5wdtdLnjz9uxjnDd7U+Y0JWACebkqBc+jtbol2PEtEW0wQV2zQ==}
     dependencies:
       expect: 29.0.3
       pretty-format: 29.0.3

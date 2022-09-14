@@ -32,7 +32,7 @@ specifiers:
   rxjs: 7.5.6
   source-map-support: 0.5.21
   supertest: 6.2.4
-  ts-jest: 29.0.0
+  ts-jest: 29.0.1
   ts-loader: 9.3.1
   ts-node: 10.9.1
   tsconfig-paths: 4.1.0
@@ -72,7 +72,7 @@ devDependencies:
   prettier: 2.7.1
   source-map-support: 0.5.21
   supertest: 6.2.4
-  ts-jest: 29.0.0_xksw3ttj5epwnfqo4ift74vbty
+  ts-jest: 29.0.1_xksw3ttj5epwnfqo4ift74vbty
   ts-loader: 9.3.1_kb3egcnme7w23lfa5xodfjfhge
   ts-node: 10.9.1_ao52im6kiihokc7tdj7weudhra
   tsconfig-paths: 4.1.0
@@ -3417,18 +3417,6 @@ packages:
       - supports-color
     dev: true
 
-  /jest-util/29.0.2:
-    resolution: {integrity: sha512-ozk8ruEEEACxqpz0hN9UOgtPZS0aN+NffwQduR5dVlhN+eN47vxurtvgZkYZYMpYrsmlAEx1XabkB3BnN0GfKQ==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    dependencies:
-      '@jest/types': 29.0.3
-      '@types/node': 16.11.59
-      chalk: 4.1.2
-      ci-info: 3.3.0
-      graceful-fs: 4.2.9
-      picomatch: 2.3.1
-    dev: true
-
   /jest-util/29.0.3:
     resolution: {integrity: sha512-Q0xaG3YRG8QiTC4R6fHjHQPaPpz9pJBEi0AeOE4mQh/FuWOijFjGXMMOfQEaU9i3z76cNR7FobZZUQnL6IyfdQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -4610,8 +4598,8 @@ packages:
     hasBin: true
     dev: true
 
-  /ts-jest/29.0.0_xksw3ttj5epwnfqo4ift74vbty:
-    resolution: {integrity: sha512-OxUaigbv5Aon3OMLY9HBtwkGMs1upWE/URrmmVQFzzOcGlEPVuWzGmXUIkWGt/95Dj/T6MGuTrHHGL6kT6Yn8g==}
+  /ts-jest/29.0.1_xksw3ttj5epwnfqo4ift74vbty:
+    resolution: {integrity: sha512-htQOHshgvhn93QLxrmxpiQPk69+M1g7govO1g6kf6GsjCv4uvRV0znVmDrrvjUrVCnTYeY4FBxTYYYD4airyJA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
     peerDependencies:
@@ -4635,7 +4623,7 @@ packages:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
       jest: 29.0.3_4echt27za7uk6ezjshmbxcfmgy
-      jest-util: 29.0.2
+      jest-util: 29.0.3
       json5: 2.2.1
       lodash.memoize: 4.1.2
       make-error: 1.3.6

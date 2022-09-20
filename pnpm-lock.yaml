@@ -33,7 +33,7 @@ specifiers:
   source-map-support: 0.5.21
   supertest: 6.2.4
   ts-jest: 29.0.1
-  ts-loader: 9.4.0
+  ts-loader: 9.4.1
   ts-node: 10.9.1
   tsconfig-paths: 4.1.0
   typescript: 4.8.3
@@ -73,7 +73,7 @@ devDependencies:
   source-map-support: 0.5.21
   supertest: 6.2.4
   ts-jest: 29.0.1_xksw3ttj5epwnfqo4ift74vbty
-  ts-loader: 9.4.0_kb3egcnme7w23lfa5xodfjfhge
+  ts-loader: 9.4.1_kb3egcnme7w23lfa5xodfjfhge
   ts-node: 10.9.1_ao52im6kiihokc7tdj7weudhra
   tsconfig-paths: 4.1.0
   typescript: 4.8.3
@@ -4663,8 +4663,8 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /ts-loader/9.4.0_kb3egcnme7w23lfa5xodfjfhge:
-    resolution: {integrity: sha512-0G3UMhk1bjgsgiwF4rnZRAeTi69j9XMDtmDDMghGSqlWESIAS3LFgJe//GYfE4vcjbyzuURLB9Us2RZIWp2clQ==}
+  /ts-loader/9.4.1_kb3egcnme7w23lfa5xodfjfhge:
+    resolution: {integrity: sha512-384TYAqGs70rn9F0VBnh6BPTfhga7yFNdC5gXbQpDrBj9/KsT4iRkGqKXhziofHOlE2j6YEaiTYVGKKvPhGWvw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       typescript: '*'

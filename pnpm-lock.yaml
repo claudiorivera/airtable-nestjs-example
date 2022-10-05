@@ -2,13 +2,13 @@ lockfileVersion: 5.4
 
 specifiers:
   '@nestjs/cli': 9.1.4
-  '@nestjs/common': 9.1.2
+  '@nestjs/common': 9.1.4
   '@nestjs/config': 2.2.0
-  '@nestjs/core': 9.1.2
+  '@nestjs/core': 9.1.4
   '@nestjs/mapped-types': '*'
-  '@nestjs/platform-express': 9.1.2
+  '@nestjs/platform-express': 9.1.4
   '@nestjs/schematics': 9.0.3
-  '@nestjs/testing': 9.1.2
+  '@nestjs/testing': 9.1.4
   '@types/express': 4.17.14
   '@types/jest': 29.1.1
   '@types/lodash': 4.14.186
@@ -39,10 +39,10 @@ specifiers:
   typescript: 4.8.4
 
 dependencies:
-  '@nestjs/common': 9.1.2_x6yqyveuahcdef4z4mxykmuv6a
-  '@nestjs/core': 9.1.2_zzb753o6ov5n3wrhompfrkwa7u
-  '@nestjs/mapped-types': 1.0.1_zeb4gyhc74qs6lqbathv6jdp3i
-  '@nestjs/platform-express': 9.1.2_umdjpi6fqr4wvw73r3mhthbyle
+  '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
+  '@nestjs/core': 9.1.4_os3bpar6zvfsuh6rrdsifrg6hi
+  '@nestjs/mapped-types': 1.0.1_dds7u4gk7gkqdcumnydaxqxvq4
+  '@nestjs/platform-express': 9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi
   airtable: 0.11.5
   class-transformer: 0.5.1
   class-validator: 0.13.2
@@ -53,9 +53,9 @@ dependencies:
 
 devDependencies:
   '@nestjs/cli': 9.1.4
-  '@nestjs/config': 2.2.0_e6ar3fodmgi6dfak6o4ayoeihe
+  '@nestjs/config': 2.2.0_6fl4rox5ofo3yz2h7ukpny327a
   '@nestjs/schematics': 9.0.3_typescript@4.8.4
-  '@nestjs/testing': 9.1.2_j2ls57gnkuuvs6xhnfklmsn2o4
+  '@nestjs/testing': 9.1.4_atqkzu3acujvho36dnj4dqtvde
   '@types/express': 4.17.14
   '@types/jest': 29.1.1
   '@types/lodash': 4.14.186
@@ -876,10 +876,10 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nestjs/common/9.1.2_x6yqyveuahcdef4z4mxykmuv6a:
-    resolution: {integrity: sha512-zpF4DaLvvsCVqfrf9LJfSeYP+SBCWCFbOCTOmEZ5Gs6Hralia6s2kS+CSicJKx8IpnyC6ZReuqdTbjcPl4yunA==}
+  /@nestjs/common/9.1.4_x6yqyveuahcdef4z4mxykmuv6a:
+    resolution: {integrity: sha512-hmGTZ8ShKFDqqlU02uU8e/8PNE4bnES4pcFa6s/T1pLDYWjyf/75Klunro1W4aQPHcxnnohBmB27WxMqFTPEfw==}
     peerDependencies:
-      cache-manager: '*'
+      cache-manager: <=5
       class-transformer: '*'
       class-validator: '*'
       reflect-metadata: ^0.1.12
@@ -900,14 +900,14 @@ packages:
       tslib: 2.4.0
       uuid: 9.0.0
 
-  /@nestjs/config/2.2.0_e6ar3fodmgi6dfak6o4ayoeihe:
+  /@nestjs/config/2.2.0_6fl4rox5ofo3yz2h7ukpny327a:
     resolution: {integrity: sha512-78Eg6oMbCy3D/YvqeiGBTOWei1Jwi3f2pSIZcZ1QxY67kYsJzTRTkwRT8Iv30DbK0sGKc1mcloDLD5UXgZAZtg==}
     peerDependencies:
       '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
       reflect-metadata: ^0.1.13
       rxjs: ^6.0.0 || ^7.2.0
     dependencies:
-      '@nestjs/common': 9.1.2_x6yqyveuahcdef4z4mxykmuv6a
+      '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
       dotenv: 16.0.1
       dotenv-expand: 8.0.3
       lodash: 4.17.21
@@ -916,8 +916,8 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /@nestjs/core/9.1.2_zzb753o6ov5n3wrhompfrkwa7u:
-    resolution: {integrity: sha512-wrb/U8PN50K9wEHOLifR9bFKDH8+Dr37rXBB5J+9v3tSWEHkT4o2OiJ8qFmfX5B9GwGE/YRKaJqxw/ScvYvPFw==}
+  /@nestjs/core/9.1.4_os3bpar6zvfsuh6rrdsifrg6hi:
+    resolution: {integrity: sha512-S6KpGeKotPYh126hhRqYLhvg9lxSbAmGfEbK8m09crIK7CYP05t32KtT6n12xl5/iva1G4Ch87Z/3rYP76etUg==}
     requiresBuild: true
     peerDependencies:
       '@nestjs/common': ^9.0.0
@@ -934,8 +934,8 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': 9.1.2_x6yqyveuahcdef4z4mxykmuv6a
-      '@nestjs/platform-express': 9.1.2_umdjpi6fqr4wvw73r3mhthbyle
+      '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
+      '@nestjs/platform-express': 9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
       iterare: 1.2.1
@@ -948,7 +948,7 @@ packages:
     transitivePeerDependencies:
       - encoding
 
-  /@nestjs/mapped-types/1.0.1_zeb4gyhc74qs6lqbathv6jdp3i:
+  /@nestjs/mapped-types/1.0.1_dds7u4gk7gkqdcumnydaxqxvq4:
     resolution: {integrity: sha512-NFvofzSinp00j5rzUd4tf+xi9od6383iY0JP7o0Bnu1fuItAUkWBgc4EKuIQ3D+c2QI3i9pG1kDWAeY27EMGtg==}
     peerDependencies:
       '@nestjs/common': ^7.0.8 || ^8.0.0
@@ -961,20 +961,20 @@ packages:
       class-validator:
         optional: true
     dependencies:
-      '@nestjs/common': 9.1.2_x6yqyveuahcdef4z4mxykmuv6a
+      '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
       class-transformer: 0.5.1
       class-validator: 0.13.2
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/platform-express/9.1.2_umdjpi6fqr4wvw73r3mhthbyle:
-    resolution: {integrity: sha512-SlAG6nfEVSk+lQL1Z4kjLip2jJ+w4mc8cG5ccM3mN06gREYfJVayNuydPUYtoxP/QmzugQfO5+cNEdqdhCmSQw==}
+  /@nestjs/platform-express/9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi:
+    resolution: {integrity: sha512-SLJWDa6V54QrUvzKI4Eyt7gyrjV7F9FY1uHFihshjmQfpf0ebCGacR9jzNwf01aHl0BJX3DUn/KYteBjz6DJXw==}
     peerDependencies:
       '@nestjs/common': ^9.0.0
       '@nestjs/core': ^9.0.0
     dependencies:
-      '@nestjs/common': 9.1.2_x6yqyveuahcdef4z4mxykmuv6a
-      '@nestjs/core': 9.1.2_zzb753o6ov5n3wrhompfrkwa7u
+      '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
+      '@nestjs/core': 9.1.4_os3bpar6zvfsuh6rrdsifrg6hi
       body-parser: 1.20.0
       cors: 2.8.5
       express: 4.18.1
@@ -1013,8 +1013,8 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/testing/9.1.2_j2ls57gnkuuvs6xhnfklmsn2o4:
-    resolution: {integrity: sha512-BfwERdTppE4oz6qxCNJVo0kaRH2FO7mipooedT2nDtYW3krGZ8978odmGdpVgNz1xwqKDH3Y/68frs5oW2CTZw==}
+  /@nestjs/testing/9.1.4_atqkzu3acujvho36dnj4dqtvde:
+    resolution: {integrity: sha512-gO6b9QJyUajh38DNdss9gSE0UO7x60Jh10W4SwHEjQT1W+yxaEWr3aLyuQItTvUVY6C28XKFLTykMpr8GO28Ug==}
     peerDependencies:
       '@nestjs/common': ^9.0.0
       '@nestjs/core': ^9.0.0
@@ -1026,9 +1026,9 @@ packages:
       '@nestjs/platform-express':
         optional: true
     dependencies:
-      '@nestjs/common': 9.1.2_x6yqyveuahcdef4z4mxykmuv6a
-      '@nestjs/core': 9.1.2_zzb753o6ov5n3wrhompfrkwa7u
-      '@nestjs/platform-express': 9.1.2_umdjpi6fqr4wvw73r3mhthbyle
+      '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
+      '@nestjs/core': 9.1.4_os3bpar6zvfsuh6rrdsifrg6hi
+      '@nestjs/platform-express': 9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi
       tslib: 2.4.0
     dev: true
 
